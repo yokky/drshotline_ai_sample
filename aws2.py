@@ -45,7 +45,7 @@ def get_inference_profile_arn(selected_model):
 #                 {"role": "system", "content": system_prompt},
 #                 {"role": "user", "content": prompt}
 #             ],
-#             "temperature": 0.5,
+#             "temperature": 0,
 #             "max_tokens": 16384
 #         })
 #     )
@@ -63,7 +63,7 @@ def ask_claude_3(prompt, system_prompt, selected_model):
                 {"role": "user", "content": f"{system_prompt}\n\n{prompt}"}
             ],
             "max_tokens": 1024,
-            "temperature": 0.5
+            "temperature": 0
         })
     )
     result = json.loads(response['body'].read())
@@ -84,7 +84,7 @@ def ask_claude_4(prompt, system_prompt, selected_model):
                     "content": prompt
                 }
             ],
-            "temperature": 0.5,
+            "temperature": 0,
             "max_tokens": 16384  # Claude 3 の通常出力は 1,024 ～ 4,096 程度が適切
         })
     )
@@ -104,7 +104,7 @@ def ask_claude_37(prompt, system_prompt):
             "messages": [
                 {"role": "user", "content": prompt}
             ],
-            "temperature": 0.5,
+            "temperature": 0,
             "max_tokens": 16384  # 通常は 1024〜4096 程度が適切
         })
     )
